@@ -5,28 +5,40 @@
       <div class="title">
         {{ props.title }}
       </div>
-      <div class="desc">
-        忽有清风化剑气，直斩二十少年意
+      <div class="sub-title">
+        {{ hitokoto }}
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({
-  title: {
-    type: String,
-    default: '朝花夕拾'
-  }
-})
+  import axios from 'axios';
+  import { ref, onMounted } from 'vue'
+
+  const hitokoto = ref('')
+
+  onMounted(async ()=>{
+    // 一言API https://developer.hitokoto.cn/sentence/demo.html
+    // 空山新雨后，天气晚来秋
+    const { data } = await axios.get('https://v1.hitokoto.cn?c=d&c=i&c=j&min_length=10&max_length=20')
+    hitokoto.value = data.hitokoto
+  })
+
+  const props = defineProps({
+    title: {
+      type: String,
+      default: '朝花夕拾'
+    }
+  })
 </script>
 
 <style lang="scss" scoped>
   #banner {
     position: relative;
     height: 400px;
-    background-color: #30a9de;
-    background-image: url('../assets/img/banner.png');
+    background-color: var(--color-text-hover);
+    background-image: url('../assets/img/banner/banner-1001.png');
     background-position: center center;
     background-size: cover;
     transition: height .35s;
@@ -39,7 +51,7 @@ const props = defineProps({
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.3);
+      background-color: var(--color-bg-mask);
     }
   }
 
@@ -53,14 +65,15 @@ const props = defineProps({
     left: 0;
     width: 100%;
     height: 100%;
-    color: #fff;
-
+    
     .title {
+      color: var(--color-text-nav);
       font-size: 32px;
       margin-bottom: 20px;
     }
 
-    .desc {
+    .sub-title {
+      color: var(--color-text-nav);
       font-size: 22px;
     }
   }
@@ -76,7 +89,7 @@ const props = defineProps({
         font-size: 24px;
       }
 
-      .desc {
+      .sub-title {
         font-size: 14px;
       }
     }
