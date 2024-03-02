@@ -8,7 +8,7 @@
     </div>
     <div class="board-bd">
       <div class="author-box">
-        <img class="avatar" src="../assets/img/avatar.png" alt="奈思">
+        <img class="avatar" src="https://wyun521-top-oss.oss-cn-beijing.aliyuncs.com/avatar/202402271757398.jpg" alt="奈思">
         <div class="intro">
           <div class="name">奈思</div>
           <div class="desc">空山新雨后，天气晚来秋</div>
@@ -19,7 +19,7 @@
           <li><router-link to="/"><i class="iconfont icon-zhuye"></i><span>首页</span></router-link></li>
           <li><router-link to="/archive"><i class="iconfont icon-_wenjianjia"></i><span>归档</span></router-link></li>
           <li><router-link to="/friends"><i class="iconfont icon-lianjie"></i><span>友链</span></router-link></li>
-          <li><router-link to="/about"><i class="iconfont icon-guanyu"></i><span>关于</span></router-link></li>
+          <li><router-link to="/about"><i class="iconfont icon-zuozhe"></i><span>关于</span></router-link></li>
         </ul>
       </div>
     </div>
@@ -47,13 +47,15 @@
     top: 0;
     right: 0;
     z-index: 9999;
-    width: 80vw;
-    height: 100vh;
+    width: 80%;
+    height: 100%;
     background-color: var(--color-bg-page);
+    font-family: var(--font-series1);
+
 
     .board-hd {
       height: 25vh;
-      background-image: url(../assets/img/cover/cover-1002.png);
+      background-image: url(https://wyun521-top-oss.oss-cn-beijing.aliyuncs.com/wallpaper/202402271752729.png);
       background-position: center;
       background-size: cover;
 
@@ -96,12 +98,13 @@
         .intro {
           padding-left: 16px;
           .name {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 700;
+            padding-bottom: 4px;
           }
 
           .desc {
-            font-size: .8rem;
+            font-size: 1rem;
           }
         }
       }
@@ -120,7 +123,7 @@
               padding: 4px 20px;
               margin-bottom: 4px;
               border-radius: 4px;
-              font-size: 1.2rem;
+              font-size: 1.4rem;
 
               .iconfont {
                 margin-right: 12px;

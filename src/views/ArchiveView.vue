@@ -1,39 +1,34 @@
 <template>
   <div class="archive-page">
-    <BannerMask title="归档"></BannerMask>
-    <div id="main">
-      <div class="w">
-        <div class="cate-box">
-          <div class="hd">分类</div>
-          <div class="bd">
-            <ul class="cate-list">
-              <li class="cate-item"><a href="#">前端</a></li>
-              <li class="cate-item"><a href="#">后端</a></li>
-              <li class="cate-item"><a href="#">兴趣</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="archive-box">
-          <div class="hd">归档</div>
-          <div class="bd">
-            <div class="archive-total">共计 19 篇文章</div>
-            <ul class="article-list">
-              <li class="article-item" v-for="item in 10">
-                <a href="#">
-                  <span class="article-date">2024-02-23</span>
-                  <span class="article-title">Vercel 部署高级用法教程</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <div class="cate-box">
+      <div class="hd">分类</div>
+      <div class="bd">
+        <ul class="cate-list">
+          <li class="cate-item"><a href="#">前端</a></li>
+          <li class="cate-item"><a href="#">后端</a></li>
+          <li class="cate-item"><a href="#">兴趣</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="archive-box">
+      <div class="hd">归档</div>
+      <div class="bd">
+        <div class="archive-total">共计 19 篇文章</div>
+        <ul class="article-list">
+          <li class="article-item" v-for="item in 10">
+            <a href="#">
+              <span class="article-date">2024-02-23</span>
+              <span class="article-title">Vercel 部署高级用法教程</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import BannerMask from '@/components/BannerMask.vue';
+
 </script> 
 
 <style lang="scss" scoped>
@@ -99,12 +94,32 @@ import BannerMask from '@/components/BannerMask.vue';
 
             .article-date {
               margin-right: 20px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
 
             .article-title {
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    .archive-page {
+      .cate-box {
+        .cate-list {
+          .cate-item {
+            margin: 0;
+
+            a {
+              padding: 8px 12px;
+              font-size: 1.3rem;
             }
           }
         }

@@ -1,35 +1,30 @@
 <template>
   <div class="home-page">
-    <BannerMask></BannerMask>
-    <div id="main">
-      <div class="w">
-        <div class="article-list">
-          <div class="article-item" v-for="item in 3">
-            <div class="cover-box">
-              <a href="#">
-                <img src="../assets/img/cover/cover-1005.png" alt="">
-              </a>
+    <div class="article-list">
+      <div class="article-item" v-for="item in 5">
+        <div class="cover-box">
+          <router-link to="/article/1001">
+            <img src="https://wyun521-top-oss.oss-cn-beijing.aliyuncs.com/wallpaper/202402271752728.png" alt="">
+          </router-link>
+        </div>
+        <div class="article-box">
+          <div class="article-title">
+            <router-link to="/article/1001">Hello NiceBlogFluid!</router-link>
+          </div>
+          <div class="article-intro">
+            <router-link to="/article/1001">
+              欢迎体验 Fluid ，这是一款 Material Design 风格的 Hexo 主题，以简约的设计帮助你专注于写作，本篇文章可预览主题的样式及功能。
+              欢迎体验 Fluid ，这是一款 Material Design 风格的 Hexo 主题，以简约的设计帮助你专注于写作，本篇文章可预览主题的样式及功能。
+            </router-link>
+          </div>
+          <div class="article-metas">
+            <div class="article-meta">
+              <i class="iconfont icon-riqi"></i>
+              <span>2024-02-22</span>
             </div>
-            <div class="article-box">
-              <div class="article-title">
-                <a href="#">Hello NiceBlogFluid!</a>
-              </div>
-              <div class="article-intro">
-                <a href="#">
-                  欢迎体验 Fluid ，这是一款 Material Design 风格的 Hexo 主题，以简约的设计帮助你专注于写作，本篇文章可预览主题的样式及功能。
-                  欢迎体验 Fluid ，这是一款 Material Design 风格的 Hexo 主题，以简约的设计帮助你专注于写作，本篇文章可预览主题的样式及功能。
-                </a>
-              </div>
-              <div class="article-metas">
-                <div class="article-meta">
-                  <i class="iconfont icon-riqi"></i>
-                  <span>2024-02-22</span>
-                </div>
-                <div class="article-meta">
-                  <i class="iconfont icon-fenlei2"></i>
-                  <span>前端</span>
-                </div>
-              </div>
+            <div class="article-meta">
+              <i class="iconfont icon-fenlei2"></i>
+              <span>前端</span>
             </div>
           </div>
         </div>
@@ -39,7 +34,7 @@
 </template>
 
 <script setup>
-import BannerMask from '@/components/BannerMask.vue';
+
 </script>
 
 <style lang="scss" scoped>

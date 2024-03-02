@@ -12,6 +12,10 @@ const router = createRouter({
       name: 'archive',
       component: () => import('../views/ArchiveView.vue')
     }, {
+      path: '/article/:id',
+      name: 'article',
+      component: () => import('../views/ArticleView.vue')
+    }, {
       path: '/friends',
       name: 'friends',
       component: () => import('../views/FriendView.vue')
