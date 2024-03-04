@@ -1,30 +1,29 @@
 <template>
   <div class="home-page">
     <div class="article-list">
-      <div class="article-item" v-for="item in 5">
+      <div class="article-item" v-for="article in articleList" :key="article.article_id">
         <div class="cover-box">
-          <router-link to="/article/1001">
-            <img src="https://wyun521-top-oss.oss-cn-beijing.aliyuncs.com/wallpaper/202402271752728.png" alt="">
+          <router-link :to="`/article/${article.article_id}`">
+            <img :src="article.article_cover_img" alt="">
           </router-link>
         </div>
         <div class="article-box">
           <div class="article-title">
-            <router-link to="/article/1001">Hello NiceBlogFluid!</router-link>
+            <router-link :to="`/article/${article.article_id}`">{{ article.article_title }}</router-link>
           </div>
           <div class="article-intro">
-            <router-link to="/article/1001">
-              欢迎体验 Fluid ，这是一款 Material Design 风格的 Hexo 主题，以简约的设计帮助你专注于写作，本篇文章可预览主题的样式及功能。
-              欢迎体验 Fluid ，这是一款 Material Design 风格的 Hexo 主题，以简约的设计帮助你专注于写作，本篇文章可预览主题的样式及功能。
+            <router-link :to="`/article/${article.article_id}`">
+              {{ article.article_desc }}
             </router-link>
           </div>
           <div class="article-metas">
             <div class="article-meta">
               <i class="iconfont icon-riqi"></i>
-              <span>2024-02-22</span>
+              <span>{{ article.article_create_date.split(' ')[0] }}</span>
             </div>
             <div class="article-meta">
               <i class="iconfont icon-fenlei2"></i>
-              <span>前端</span>
+              <span>{{ article.article_cate_id }}</span>
             </div>
           </div>
         </div>
@@ -34,7 +33,19 @@
 </template>
 
 <script setup>
+  import { getArticleListAPI } from '@/api/article';
+  import { ref, onMounted } from 'vue'
 
+  const articleList = ref([])
+  const params = {
+    pageNum: 1,
+    pageSize: 10
+  }
+
+  onMounted(async ()=>{
+    const { data, total } = await getArticleListAPI(params)
+    articleList.value = data
+  })
 </script>
 
 <style lang="scss" scoped>

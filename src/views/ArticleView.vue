@@ -1,5 +1,10 @@
 <template>
   <div class="article-page">
+
+    <h2>{{ article.article_title }}</h2>
+    <div v-html="article.article_content" class="article_content">
+    </div>
+
     <h1>标题1</h1>
     <h2>标题2</h2>
     <h3>标题3</h3>
@@ -63,7 +68,19 @@
 </template>
 
 <script setup>
-  
+  import { getArticleDetailAPI } from '@/api/article';
+
+  import { ref, onMounted } from 'vue'
+  import { useRoute } from 'vue-router';
+
+  const article = ref({})
+
+  const route = useRoute()
+
+  onMounted(async () => {
+    const { data } = await getArticleDetailAPI(route.params.id)
+    article.value = data
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -129,6 +146,7 @@
     display: block;
     margin: .8rem auto;
     padding: .4rem;
+    max-width: 100%;
     max-height: 456px;
     border: 1px solid var(--color-border);
     border-radius: .2rem;

@@ -3,14 +3,14 @@
     <div class="links-box">
       <div class="hd">朋友们</div>
       <ul class="links-list">
-        <li class="links-item" v-for="(item, index) in 5">
-          <a href="#">
+        <li class="links-item" v-for="link in linkList" :key="link.link_id">
+          <a :href="link.link_url">
             <div class="avatar">
-              <img src="https://wyun521-top-oss.oss-cn-beijing.aliyuncs.com/avatar/202402271757398.jpg" alt="">
+              <img :src="link.link_img" alt="">
             </div>
             <div class="info">
-              <div class="title">朝花夕拾{{ index + 1 }}</div>
-              <div class="desc">空山新雨后，天气晚来秋</div>
+              <div class="title">{{ link.link_title }}</div>
+              <div class="desc">{{ link.link_desc }}</div>
             </div>
           </a>
         </li>
@@ -20,7 +20,16 @@
 </template>
 
 <script setup>
-  
+  import { getLinkListAPI } from '@/api/link';
+  import { ref, onMounted } from 'vue'
+
+  const linkList = ref([])
+  const link_cate_id = 1001
+
+  onMounted(async () => {
+    const { data, total } = await getLinkListAPI(link_cate_id)
+    linkList.value = data
+  })
 </script>
 
 <style lang="scss" scoped>
